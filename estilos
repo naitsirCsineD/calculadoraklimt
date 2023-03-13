@@ -1,0 +1,30 @@
+body {
+	background-image: url("path/to/klimt-background.jpg");
+	background-repeat: repeat;
+	color: #b8860b;
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 18px;
+}
+
+h1 {
+	text-align: center;
+	font-size: 36px;
+	margin-top: 50px;
+}
+
+input[type=file], button {
+	background-color: #ffd700;
+	color: #8b4513;
+	border: none;
+	padding: 10px;
+	margin: 10px 0;
+}
+
+input[type=file]:hover, button:hover {
+	background-color: #ffa500;
+	cursor: pointer;
+}
+
+#results {
+	margin-top: 50px;
+}

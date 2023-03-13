@@ -1,0 +1,24 @@
+function processCSV() {
+	const csvFile = document.getElementById("csv-file").files[0];
+	const reader = new FileReader();
+	reader.readAsText(csvFile);
+	reader.onload = function() {
+		const csvData = reader.result;
+		const xhr = new XMLHttpRequest();
+		xhr.open("POST", "/process-csv");
+		xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+		xhr.onload = function() {
+			const data = JSON.parse(xhr.responseText);
+			const resultsDiv = document.getElementById("results");
+			for (const result of data) {
+				const link = document.createElement("a");
+				link.setAttribute("href", "data:text/csv;charset=utf-8," + encodeURIComponent(result.content));
+				link.setAttribute("download", result.filename);
+				link.innerHTML = result.filename;
+				resultsDiv.appendChild(link);
+				resultsDiv.appendChild(document.createElement("br"));
+			}
+		};
+		xhr.send(JSON.stringify({ csvData }));
+	};
+}
