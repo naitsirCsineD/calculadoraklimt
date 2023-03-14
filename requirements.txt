@@ -1,1 +1,4 @@
-web: python Calculadora_klimt.py
+flask
+csv
+pandas
+matplotlib.pyplot
